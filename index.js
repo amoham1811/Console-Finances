@@ -92,23 +92,39 @@ var finances = [
 
 
 //function definitions
-function getColumnSum(columnNum) {
-    var sumOfColumn = 0;
-    for(var i = 0; i < finances.length; i++)
-        sumOfColumn += finances[i][columnNum];
+    //function to calculate total profit for the period
+    function getColumnSum(columnNum) {
+        var sumOfColumn = 0;
+        for(var i = 0; i < finances.length; i++)
+            sumOfColumn += finances[i][columnNum];
 
-    return sumOfColumn;
-}
+        return sumOfColumn;
+    }
 
+    //function for calculating average monthly profit/loss for entire dataset
+    function getAverageChange(columnNum){
+        var sumOfDifference = 0.00;
+        var difference = 0.00;
+        for(var i = 0; i < finances.length - 1; i++){
+            difference = finances[i+1][columnNum] - finances[i][columnNum];   
+            sumOfDifference += difference;
+        }
+        averageDifference = (sumOfDifference /finances.length).toFixed(2);
+    
+        return averageDifference;
+    }
 
 
 
 //function calls with output written to console.
 
-//Code to count the number of months of data included in the array.
-console.log("Financial Analysis");
-console.log("===================");
-console.log(`Total Months = ${finances.length}`);
+    //Code to count the number of months of data included in the array.
+    console.log("Financial Analysis");
+    console.log("===================");
+    console.log(`Total Months = ${finances.length}`);
 
-//log total profit/loss to console
-console.log(`Total : $${getColumnSum(1)}`);
+    //log total profit/loss to console
+    console.log(`Total : $${getColumnSum(1)}`);
+
+    //log average monthly profit/loss to console
+    console.log(`Average Change : $${getAverageChange(1)}`);
