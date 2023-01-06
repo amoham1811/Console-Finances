@@ -87,10 +87,28 @@ var finances = [
 ['Feb-2017', 671099]
 ];
 
+//Variable Declarations
 
-//Write financial analysis to console.
+
+
+//function definitions
+function getColumnSum(columnNum) {
+    var sumOfColumn = 0;
+    for(var i = 0; i < finances.length; i++)
+        sumOfColumn += finances[i][columnNum];
+
+    return sumOfColumn;
+}
+
+
+
+
+//function calls with output written to console.
 
 //Code to count the number of months of data included in the array.
 console.log("Financial Analysis");
 console.log("===================");
 console.log(`Total Months = ${finances.length}`);
+
+//log total profit/loss to console
+console.log(`Total : $${getColumnSum(1)}`);
