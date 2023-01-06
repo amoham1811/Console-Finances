@@ -90,6 +90,8 @@ var finances = [
 //Variable Declarations
 var greatestIncreaseIndex;
 var greatestIDate;
+var geatestDecreaseIndex;
+var greatestDDate;
 
 
 //function definitions
@@ -106,11 +108,13 @@ var greatestIDate;
     function getAverageChange(columnNum){
         var sumOfDifference = 0.00;
         var difference = 0.00;
+
         for(var i = 0; i < finances.length - 1; i++){
-            difference = finances[i+1][columnNum] - finances[i][columnNum];   
+            difference = finances[i+1][columnNum] - finances[i][columnNum];
             sumOfDifference += difference;
         }
-        averageDifference = (sumOfDifference /finances.length).toFixed(2);
+        
+        averageDifference = (sumOfDifference /(finances.length-1)).toFixed(2);
     
         return averageDifference;
     }
@@ -119,6 +123,7 @@ var greatestIDate;
     function getGreatestIncrease(columnNum){
         var difference = [];
         var greatestIncrease = 0.00;
+
         for(var i = 0; i < finances.length - 1; i++){
             difference[i] = finances[i+1][columnNum] - finances[i][columnNum];  
             
@@ -132,9 +137,28 @@ var greatestIDate;
     greatestIncrease = getGreatestIncrease(1);
     greatestIDate = finances[greatestIncreaseIndex][0];
     
+    //function to calculat the greatest monthly profit decrease across the entire dataset.
+    function getGreatestDecrease(columnNum){
+        var difference = [];
+        var greatestDecrease = 0.00;
+
+        for(var i = 0; i < finances.length - 1; i++){
+            difference[i] = finances[i+1][columnNum] - finances[i][columnNum];   
+        
+            if (difference [i] < greatestDecrease && (i - 1 >= 0)){
+                greatestDecrease = difference[i];
+                geatestDecreaseIndex = i + 1;
+            }
+        }
+        return greatestDecrease;
+    }
+    greatestDecrease = getGreatestDecrease(1);
+    greatestDDate = finances[geatestDecreaseIndex][0];
+
 //function calls with output written to console.
 
     //Code to count the number of months of data included in the array.
+    console.log("===================");
     console.log("Financial Analysis");
     console.log("===================");
     console.log(`Total Months = ${finances.length}`);
@@ -147,3 +171,6 @@ var greatestIDate;
 
     //log the greatest monthly increase in profit/loss across the entire dataset to the console
     console.log(`Greatest Increase : ${greatestIDate} $${greatestIncrease} (current month - previous month)`);
+
+    //log the greatest monthly decrease in profit/loss across the entire dataset to the console
+    console.log(`Greatest Decrease : ${greatestDDate} $${greatestDecrease} (current month - previous month)`);
