@@ -87,3 +87,10 @@ var finances = [
 ['Feb-2017', 671099]
 ];
 
+
+//Write financial analysis to console.
+
+//Code to count the number of months of data included in the array.
+console.log("Financial Analysis");
+console.log("===================");
+console.log(`Total Months = ${finances.length}`);
