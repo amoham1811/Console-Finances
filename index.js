@@ -88,7 +88,6 @@ var finances = [
 ];
 
 
-
 //Write financial analysis to console.
 
 //Code to count the number of months of data included in the array.
