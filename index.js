@@ -88,7 +88,8 @@ var finances = [
 ];
 
 //Variable Declarations
-
+var greatestIncreaseIndex;
+var greatestIDate;
 
 
 //function definitions
@@ -114,8 +115,23 @@ var finances = [
         return averageDifference;
     }
 
-
-
+    // function to calculate the greates monthly profit increase across the entire dataset
+    function getGreatestIncrease(columnNum){
+        var difference = [];
+        var greatestIncrease = 0.00;
+        for(var i = 0; i < finances.length - 1; i++){
+            difference[i] = finances[i+1][columnNum] - finances[i][columnNum];  
+            
+            if (difference[i] > greatestIncrease && (i - 1 >= 0)){
+                greatestIncrease = difference[i];
+                greatestIncreaseIndex = i + 1;
+            }
+        }
+        return greatestIncrease;
+    }
+    greatestIncrease = getGreatestIncrease(1);
+    greatestIDate = finances[greatestIncreaseIndex][0];
+    
 //function calls with output written to console.
 
     //Code to count the number of months of data included in the array.
@@ -128,3 +144,6 @@ var finances = [
 
     //log average monthly profit/loss to console
     console.log(`Average Change : $${getAverageChange(1)}`);
+
+    //log the greatest monthly increase in profit/loss across the entire dataset to the console
+    console.log(`Greatest Increase : ${greatestIDate} $${greatestIncrease} (current month - previous month)`);
