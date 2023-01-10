@@ -87,6 +87,7 @@ var finances = [
 ['Feb-2017', 671099]
 ];
 
+
 //Variable Declarations
 var greatestIncreaseIndex;
 var greatestIDate;
@@ -174,3 +175,21 @@ var greatestDDate;
 
     //log the greatest monthly decrease in profit/loss across the entire dataset to the console
     console.log(`Greatest Decrease : ${greatestDDate} $${greatestDecrease} (current month - previous month)`);
+
+    function doreport(){
+        //assign html ul list elements to variables
+        var firstLine = document.getElementById("line1");
+        var secondLine = document.getElementById("line2");
+        var thirdLine = document.getElementById("line3");
+        var fourthLine = document.getElementById("line4");
+        var fifthLine = document.getElementById("line5");
+
+        //assign new values to list elements
+        firstLine.textContent = `Total Months : ${finances.length}`;
+        secondLine.textContent = `Total Profit : \$${getColumnSum(1)}`;
+        thirdLine.textContent = `Average Change : \$${getAverageChange(1)}`;
+        fourthLine.textContent = `Greatest Increase : ${greatestIDate}  \$${greatestIncrease} (current month - previous month)`;
+        fifthLine.textContent = `Greatest Decrease : ${greatestDDate}   \$${greatestDecrease} (current month - previous month)`;
+    }
+
+    window.onload = doreport;
