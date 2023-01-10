@@ -1,0 +1,30 @@
+body {
+    background-color: aqua;
+}
+
+h1{
+    padding-top: 5%;
+    padding-left: 30%;
+}
+h3{
+     padding-left: 30%;
+     font-style: oblique;
+}
+ul li::before {
+    
+    content: '';
+    display: inline-block;
+    height: 25px;
+    width: 35px;
+    background-image: url('/assets/images/finance.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: -35px;
+       
+}
+
+li {
+    list-style: none;
+    padding-left: 30%;
+    font-size: x-large;
+}
