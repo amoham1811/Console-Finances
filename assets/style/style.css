@@ -11,12 +11,11 @@ h3{
      font-style: oblique;
 }
 ul li::before {
-    
     content: '';
     display: inline-block;
     height: 25px;
     width: 35px;
-    background-image: url('/assets/images/finance.png');
+    background-image: url('../images/finance.png');
     background-size: contain;
     background-repeat: no-repeat;
     margin-left: -35px;
